@@ -104,8 +104,12 @@ Module.register("MMM-CloudGatewayUltra", {
     grid.className = "cgu-stats small";
 
     grid.appendChild(this.statRow("Uptime", formatUptime(this.status.uptimeSec)));
-    grid.appendChild(this.statBar("CPU", this.status.cpuPct, this.config.cpuAlertThreshold));
+    grid.appendChild(this.statRow("Load avg", formatLoad(this.status.load1)));
     grid.appendChild(this.statBar("Memory", this.status.memPct, this.config.memAlertThreshold));
+    grid.appendChild(this.statRow("Clients", this.status.clientCount ?? "N/A"));
+    grid.appendChild(
+      this.statRow("Throughput", formatThroughput(this.status.wanRxBytesPerSec, this.status.wanTxBytesPerSec))
+    );
 
     if (this.status.wanIp || this.status.wanIsp) {
       const wanLabel = this.status.wanIsp ? `WAN (${this.status.wanIsp})` : "WAN";
@@ -171,4 +175,22 @@ function formatUptime(seconds) {
   if (d > 0) return `${d}d ${h}h`;
   if (h > 0) return `${h}h ${m}m`;
   return `${m}m`;
+}
+
+function formatLoad(load1) {
+  if (load1 === null || load1 === undefined) return "N/A";
+  return load1.toFixed(2);
+}
+
+function formatThroughput(rxBytesPerSec, txBytesPerSec) {
+  if (rxBytesPerSec === null && txBytesPerSec === null) return "N/A";
+  const down = rxBytesPerSec !== null ? formatBytesPerSec(rxBytesPerSec) : "N/A";
+  const up = txBytesPerSec !== null ? formatBytesPerSec(txBytesPerSec) : "N/A";
+  return `&darr;${down} &uarr;${up}`;
+}
+
+function formatBytesPerSec(bytesPerSec) {
+  if (bytesPerSec < 1024) return `${Math.round(bytesPerSec)}B/s`;
+  if (bytesPerSec < 1024 * 1024) return `${(bytesPerSec / 1024).toFixed(1)}KB/s`;
+  return `${(bytesPerSec / (1024 * 1024)).toFixed(1)}MB/s`;
 }

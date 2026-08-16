@@ -81,6 +81,21 @@ Add to `~/MagicMirror/config/config.js`:
 | `showStats`          | `true`                  | Toggle the uptime/CPU/memory/WAN block.                                                          |
 | `debug`              | `false`                 | Logs raw API responses to the MagicMirror server console — useful if fields differ on your firmware. |
 
+## Testing without MagicMirror installed
+
+`bin/check-status.js` runs the exact same client code the module uses, outside
+of MagicMirror, and prints everything it fetched and parsed. Useful before
+you've even installed MagicMirror, or any time you want to check field names
+for your firmware:
+
+```bash
+CGU_HOST=192.168.1.1 CGU_API_KEY=your_key node bin/check-status.js
+```
+
+It prints the resolved site/device ids, the raw JSON your console returned,
+the parsed status object, and any computed alerts — so you can confirm
+connectivity and see real field names before wiring it into `config.js`.
+
 ## Troubleshooting
 
 - **"Could not auto-detect the gateway device"** — set `deviceId` explicitly.
