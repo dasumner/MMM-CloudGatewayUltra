@@ -1,0 +1,7 @@
+{
+  "name": "MMM-CloudGatewayUltra",
+  "version": "1.0.0",
+  "description": "MagicMirror module showing status and alerts for a Ubiquiti Cloud Gateway Ultra (or other UniFi OS console) via the local Network Integration API.",
+  "main": "MMM-CloudGatewayUltra.js",
+  "license": "MIT"
+}

@@ -1,0 +1,113 @@
+.cgu-wrapper {
+  min-width: 220px;
+}
+
+.cgu-status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.cgu-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cgu-dot-green {
+  background-color: #6ecb63;
+}
+
+.cgu-dot-yellow {
+  background-color: #f2c94c;
+}
+
+.cgu-dot-red {
+  background-color: #eb5757;
+}
+
+.cgu-name {
+  font-size: 1.1em;
+}
+
+.cgu-state {
+  margin-left: auto;
+}
+
+.cgu-stats {
+  margin-bottom: 8px;
+}
+
+.cgu-stat-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 0;
+}
+
+.cgu-stat-label {
+  min-width: 90px;
+}
+
+.cgu-stat-value {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+.cgu-bar-track {
+  flex: 1;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.cgu-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+}
+
+.cgu-bar-ok {
+  background-color: #6ecb63;
+}
+
+.cgu-bar-high {
+  background-color: #eb5757;
+}
+
+.cgu-alert-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cgu-alert {
+  padding: 4px 8px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  border-left: 3px solid;
+  font-size: 0.85em;
+}
+
+.cgu-alert-critical {
+  border-color: #eb5757;
+  background-color: rgba(235, 87, 87, 0.12);
+}
+
+.cgu-alert-warning {
+  border-color: #f2c94c;
+  background-color: rgba(242, 201, 76, 0.12);
+}
+
+.cgu-alert-info {
+  border-color: #56ccf2;
+  background-color: rgba(86, 204, 242, 0.12);
+}
+
+.cgu-error {
+  color: #eb5757;
+}
